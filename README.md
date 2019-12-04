@@ -68,4 +68,3 @@ export const function = param => ({
 
 ### extension 
 Bracket Pair Colorizer
-
