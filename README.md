@@ -1,68 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Redux
+React+Redux는 상태관리를 하는 전용 장소(store)에서 상태를 관리하고, React 컴포넌트는 그걸 보여주기만 하는 용도로 쓰인다.
 
-## Available Scripts
+### 구성
+```js
+    //entry point
+    1. src
+        index.js 
+            1) (Action & Action Creator 명시)
+            2) Reducer 명시
 
-In the project directory, you can run:
+    //component
+    2. component
+        App.js
 
-### `yarn start`
+    //Actions Creators
+    3. actions
+        index.js
+            1) Action Creator 함수 => ({
+                Action부분
+                ㄱ) params : type
+                ㄴ) params : 옵션
+            })
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+    //Reducers 
+    4. reducers
+        index.js
+            1) 사용할 reduce 함수들을 사용할 combineReducers
+        todos.js
+            1) 전달 인자 2개(state, action)
+        visibilityFilter.js
+    
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    //dispatch
+    5. dispatch
 
-### `yarn test`
+```
+### Store
+1. 상태(State)는 기본적으로 전부 여기서 집중관리 됩니다. 커다란 JSON의 결정체정도의 이미지입니다.
+2. 상태(State)를 카테고리별로 분류
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Action Creator
+1. Store에 대해 뭔가 하고 싶은 경우엔 Action 을 발행한다.
+2. Store 내부 로직이 Action의 발생을 감지하면, State가 경신된다.
+```js
+export const function = param => ({
+    type: "액션의 종류를 식별할 수 있는 문자열 혹은 심볼",
+    payload: "액션의 실행에 필요한 임의의 데이터",
+})
 
-### `yarn build`
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Reducers
+1. payload를 활용해서 상태값을 react에 반영하기 위해 사용.
+2. 이전 상태와 Action을 합쳐, 새로운 state를 만드는 조작
+3. 초기상태는 Reducer의 디폴트 인수에서 정의된다.
+(상태가 변할 때 전해진 state는 그 자체의 값으로 대체 되는 것이 아니라, 새로운 것이 합성되는 것처럼 쓰여진다.)
+4.  대규모 개발에 Reducer를 미세하게 분할하는 경우 Redux에서 제공하는 `combineReducers`함수를 이용
+(Reducer분할에 쓰인 Key가 그대로 State분할에도 쓰입니다.)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### dispatch
+1. 앞에서 수행한 action을 dispatch화 한다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+### Ref 사이트
+[react-redux] : https://medium.com/@ca3rot/%EC%95%84%EB%A7%88-%EC%9D%B4%EA%B2%8C-%EC%A0%9C%EC%9D%BC-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B8%EA%B1%B8%EC%9A%94-react-redux-%ED%94%8C%EB%A1%9C%EC%9A%B0%EC%9D%98-%EC%9D%B4%ED%95%B4-1585e911a0a6
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### extension 
+Bracket Pair Colorizer
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
