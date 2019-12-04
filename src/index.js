@@ -1,11 +1,11 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import App from './components/App';
+import rootReducer from './reducers';
 
-import { createStore } from 'redux'
-import rootReducer from './reducers'
-import { Provider } from 'react-redux'
 
-import App from './component/App'
 
 //createStore(rootReducer)
 const store = createStore(rootReducer)

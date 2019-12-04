@@ -1,7 +1,7 @@
 let nextTodoId = 0;
 
 //Action Creator 
-export const addTodos = text => ({
+export const addTodo = text => ({
     //Action
         //params 1: type (필수)
         type: 'ADD_type',
