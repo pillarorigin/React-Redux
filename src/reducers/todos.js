@@ -12,7 +12,7 @@ const todos = (state = [], action) => {
                 //  2. 전달 받은 action을 사용
                 { id: action.id, text: action.text, completed: false }
             ]
-        case 'TOOGLE_TODO':
+        case 'TOGGLE_TODO':
             // 바꿔야할 targer을 발견하면 앞의 로직을 반환 (map의 return 값은 array임)
             return state.map(todo => todo.id === action.id ? { ...todo, completed: !todo.completed } : todo);
 
