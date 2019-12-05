@@ -4,7 +4,7 @@ let nextTodoId = 0;
 export const addTodo = text => ({
     //Action
         //params 1: type (필수)
-        type: 'ADD_type',
+        type: 'ADD_TODO',
         //params 2: user.(옵션)
         id: nextTodoId++,
         // text : text
